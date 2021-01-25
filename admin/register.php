@@ -101,6 +101,7 @@
                     processData: false,
                     contentType: false,
                     dataType:'text',
+                    cache:false,
                     beforeSend: function () {
                         $('#regicon').removeClass('fa-sign-in-alt');
                         $('#regicon').addClass('fa-spinner fa-pulse');
