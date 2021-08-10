@@ -1,0 +1,55 @@
+<meta charset="UTF-8">
+
+
+<canvas id="myChart"></canvas>
+
+<script src="charts/chart.js"></script>
+
+<script>
+    function fetchChartData() {
+        $.ajax({
+            type: 'get',
+            url: `../backend/getChart.php`,
+            data:{},
+            dataType: 'json',
+            success: function (response) {
+                displayChart(response.months, response.data)
+            },
+            error: function(xhr, status, message){
+                alert(message)
+            }
+        });
+    }
+    fetchChartData();
+    
+
+    function displayChart(months, order_data){
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'line',
+
+            // The data for our dataset
+            data: {
+                labels: months,
+                datasets: [
+                    {
+                        label: 'Order Statistics',
+                        backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: 'rgb(255, 99, 132)',
+                        data: order_data
+                    },
+                    // {
+                    //     label: 'My Second',
+                    //     backgroundColor: 'rgb(255, 255, 132)',
+                    //     borderColor: 'rgb(255, 99, 123)',
+                    //     data: [20, 10, 50, 20, 20, 10, 65]
+                    // }
+                ]
+            },
+
+            // Configuration options go here
+            options: {}
+        });
+    }
+</script>

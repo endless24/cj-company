@@ -12,27 +12,27 @@
         <script src="../js/jquery.js"></script>
         <script src="../bootstrap4/js/bootstrap.bundle.js"></script>
     </head>
-    <body>
+    <body style="background-color: #3f5378;">
         <div  style="margin:6vh auto; text-align:center;" class="p-2">
             <img src="img/logo.png" alt="icon" style="max-height:90px; margin:10px;">
-            <span style="font-size:20px; "> <b>Admin register</b></span>
+            <span style="font-size:20px; color:white "> <b>Admin register</b></span>
             <div id="form_container" class="p-4 bg-light" >
                 <form action="" id="formreg" class="text-left">
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="fname"><i class="fa fa-user"></i> First name</label>
-                                <input type="text" id="fname" name="fname" class="form-control" >
+                                <input type="text" id="fname" name="fname" class="form-control" style="box-shadow: 3px 3px  6px  #3f5378 !important;" >
                             </div>
                             <div class="col-md-6 " >
                                 <label for="lname"><i class="fa fa-user"></i> Last Name</label>
-                                <input type="text" id="lname" name="lname" class="form-control" >  
+                                <input type="text" id="lname" name="lname" class="form-control" style="box-shadow: 3px 3px  6px  #3f5378 !important;">  
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="phone"><i class="fa fa-phone-alt"></i> Phone</label>
-                        <input type="tel" name="phone" id="phone" class="form-control">
+                        <input type="tel" name="phone" id="phone" class="form-control" required style="box-shadow: 3px 3px  6px  #3f5378 !important;">
                     </div>
                     <div class="form-group">
                         <div class="row">
@@ -41,7 +41,7 @@
                                     <i class="fa fa-envelope"></i>
                                     Email
                                 </label>
-                                <input type="text" id="email" name="email" class="form-control" >
+                                <input type="text" id="email" name="email" class="form-control" required  style="box-shadow: 3px 3px  6px  #3f5378 !important;">
                             </div>
                             <div class="col-md-6">
                                 <label for="pass">
@@ -49,9 +49,9 @@
                                     Password
                                 </label>
                                 <div class="input-group">
-                                <input type="password" id="pass" name="pass" class="form-control" >
-                                    <div class="input-group-append" style="cursor:pointer" id="pass_eyes">
-                                        <span class="input-group-text">
+                                    <input type="password" id="pass" name="pass" class="form-control" required style="box-shadow: 3px 3px  6px  #3f5378 !important;" >
+                                    <div class="input-group-append" style="cursor:pointer; box-shadow: 3px 3px  6px  #3f5378 !important;" id="pass_eyes">
+                                        <span class="input-group-text" >
                                             <i class="fa fa-eye-slash"></i>
                                         </span>
                                     </div>
@@ -61,11 +61,11 @@
                     </div>
                     <div class="form-group">
                         <label for="rem">Uplade Image</label>
-                        <input type="file" id="image" name="image" class="form-control">
+                        <input type="file" id="image" name="image" class="form-control" style="box-shadow: 3px 3px  6px  #3f5378 !important;">
                     </div>
                     <div class="mt-3 text-right">
                         Already have account? <a href="login.php">Login.</a>
-                        <button class="btn btn-primary  "> 
+                        <button class="btn text-light " style="box-shadow: 3px 3px  6px  #3f5378 !important; background-color: #3f5378"> 
                             <i class="fa fa-sign-in-alt" id="regicon"></i> 
                             Register
                         </button>
@@ -100,25 +100,30 @@
                     data:form_inputdata,
                     processData: false,
                     contentType: false,
-                    dataType:'text',
+                    dataType:'json',
                     cache:false,
                     beforeSend: function () {
                         $('#regicon').removeClass('fa-sign-in-alt');
                         $('#regicon').addClass('fa-spinner fa-pulse');
                         
                     },
-
                     success: function (res){
                         if(res.status == 'success') {
-                            console.log(res);  
+                            alert(res.message);
+                            location.href='login.php';  
+                        }else{
+                            alert(res.message);
                         }
                     },
                     error:function (xhr,status,message){
                         console.log(message);
 
-                    }
-                        
+                    },
+                    complete: function(){
+                    $('#regicon').addClass('fa-user-plus');
+                    $('#regicon').removeClass('fa-spinner fa-pulse'); 
                     
+                    }
 
                 })
                 

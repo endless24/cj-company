@@ -1,0 +1,50 @@
+<meta charset="UTF-8">
+
+
+<canvas id="chartss"></canvas>
+
+<script src="charts/chart.js"></script>
+
+<script>
+     function fetchviewstData() {
+        $.ajax({
+            type: 'get',
+            url: `././backend/getviews.php`,
+            data:{},
+            dataType: 'json',
+            success: function (response) {
+                getchartdata(response.months, response.data);
+                console.log(response);
+            },
+            error: function(xhr, status, message){
+                // alert(message)
+            }
+        });
+    }
+    fetchviewstData();
+
+
+function getchartdata(months, View_data) {
+    var ctx = document.getElementById('chartss').getContext('2d');
+    var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'line',
+
+        // The data for our dataset
+        data: {
+            labels:months,
+            datasets: [{
+            
+                label: 'Views Chart',
+                backgroundColor: 'qua',
+                borderColor: 'rgb(255, 99, 123)',
+                data: View_data
+            }]
+        },
+
+        // Configuration options go here
+        options: {}
+    });
+    
+}
+</script>

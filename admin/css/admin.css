@@ -28,7 +28,14 @@
     
 }
 
-
+#msg_icon {
+    position: relative;
+    /* background-color: #3f5378; */
+    border-radius: 50px;
+    font-size:0.7rem;
+    top: -8px;
+    left: -5px;
+}
 
 #sidebar{
     height: 100vh;
@@ -48,7 +55,7 @@
     display: none;
 }
 #main{
-    height: 2000px;
+    height: 100vh;
     margin-left: 250px;
 }
 #top_menu{
@@ -63,28 +70,46 @@
     z-index: 1;
 }
 
+#side_menu{
+    max-height: 350px;
+    overflow-y: auto;
+}
 #side_menu .navbar-nav{
     width: 100%;
+}
+/* 
+.prodetails{
+    border:1px solid black;
+} */
+
+#desc{
+    resize: none;
+}
+#profi{
+    box-shadow: 3px 3px  6px  #3f5378 !important;
+}
+#listcat{
+    box-shadow: 6px 5px  8px  #363738 !important;
 }
 
 #side_menu a.nav-link.active{
     background-color: #3f5378;
-    color: rgb(233, 232, 232);
+    color: rgb(207, 205, 205);
     border-left:3px solid rgb(233, 232, 232);
 }
 #side_menu a.nav-link{
     box-shadow: 0 0 1px #1d232c;
-    color: wheat;
+    color: white;
     border-left:3px solid transparent;
 }
 #side_menu a.nav-link:hover{
     background-color: #3f5378;
-    color: rgb(233, 232, 232);
+    color: rgb(173, 169, 169);
     border-left:3px solid rgb(233, 232, 232);
 }
 
 
-@media screen and (max-width:768px){
+@media screen and (max-width:769px){
     #sidebar{
         left: -250px;
     }
@@ -98,11 +123,14 @@
 }
 
 
-
 #ingroup{
     max-width: 60%;
-    
+    /* display:none; */
+}
 
+#admin_details{
+    background-color: #425274;
+    /* height: 100%;   */
 }
 
 #ingroup input{
@@ -111,4 +139,8 @@
     color: black;
     border-radius: 20px !important;
     background-color: #425274;
+}
+
+#pro_edit{
+    height: 400px !important;
 }
